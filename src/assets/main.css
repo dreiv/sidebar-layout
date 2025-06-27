@@ -1,0 +1,202 @@
+:root {
+  --header-height: 60px;
+
+  /* Responsive breakpoints */
+  --tablet-breakpoint: 768px;
+  --desktop-breakpoint: 1200px;
+
+  /* Z-index layering system - ordered from lowest to highest */
+  --z-resize-handle: 10; /* Resize handle above sidebar content */
+  --z-sidebar-backdrop: 994; /* Sidebar backdrop */
+  --z-sidebar-mobile: 995; /* Mobile sidebar */
+  --z-menu-backdrop: 996; /* Menu backdrop above sidebar */
+  --z-menu: 997; /* Menu above sidebar */
+  --z-drag-indicator: 998; /* Drag indicator during resize */
+  --z-header: 999; /* App header on top of everything */
+
+  /* Colors - Primary */
+  --color-primary: #007bff;
+  --color-primary-hover: #0056b3;
+  --color-primary-light: #e3f2fd;
+
+  /* Colors - Accent */
+  --color-accent: #007bff;
+  --color-accent-dark: #0056b3;
+
+  /* Colors - Accent */
+  --color-accent: #007bff;
+  --color-accent-dark: #0056b3;
+  --color-accent-light: #e3f2fd;
+
+  /* Colors - Text */
+  --color-text-primary: #2d3748;
+  --color-text-secondary: #4a5568;
+  --color-text-tertiary: #666;
+  --color-text-muted: #888;
+  --color-text-dark: #333;
+  --color-text-medium: #555;
+  --color-text-light: #999;
+
+  /* Colors - Background */
+  --color-bg-primary: #ffffff;
+  --color-bg-secondary: #f8f9fa;
+  --color-bg-tertiary: #e9ecef;
+  --color-bg-backdrop: rgba(0, 0, 0, 0.3);
+
+  /* Colors - Border */
+  --color-border-light: #ddd;
+  --color-border-lighter: #eee;
+  --color-border-section: #e2e8f0;
+
+  /* Spacing - Common values */
+  --space-xs: 5px;
+  --space-sm: 8px;
+  --space-md: 10px;
+  --space-lg: 12px;
+  --space-xl: 15px;
+  --space-2xl: 16px;
+  --space-3xl: 20px;
+  --space-4xl: 25px;
+  --space-5xl: 30px;
+  --space-6xl: 35px;
+  --space-7xl: 40px;
+  --space-8xl: 48px;
+
+  /* Spacing - Special values */
+  --space-1: 1px;
+  --space-2: 2px;
+  --space-4: 4px;
+  --space-6: 6px;
+
+  /* Colors - Additional */
+  --color-bg-light-blue: #f8f9ff;
+  --color-bg-hover: rgba(0, 123, 255, 0.3);
+  --color-shadow-light: rgba(0, 0, 0, 0.08);
+  --color-shadow-medium: rgba(0, 0, 0, 0.1);
+  --color-shadow-dark: rgba(0, 0, 0, 0.12);
+  --color-border-gray: #f5f5f5;
+  --color-backdrop-mobile: #0005;
+
+  /* Border Radius */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+}
+
+#app {
+  height: 100vh;
+  width: 100vw;
+}
+
+/* Global shared styles */
+
+/* Shared backdrop base styles for overlay components */
+.overlay-backdrop {
+  position: fixed;
+  top: var(--header-height);
+  left: 0;
+  width: 100%;
+  height: calc(100% - var(--header-height));
+  background-color: var(--color-backdrop-mobile);
+}
+
+/* Specific backdrop z-indexes */
+.menu-backdrop {
+  z-index: var(--z-menu-backdrop);
+}
+
+.sidebar-backdrop {
+  z-index: var(--z-sidebar-backdrop);
+}
+
+/* Hide backdrop on larger screens */
+@media (min-width: 769px) {
+  .overlay-backdrop {
+    display: none;
+  }
+}
+
+/* Shared backdrop transitions */
+.backdrop-enter-active,
+.backdrop-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.backdrop-enter-from,
+.backdrop-leave-to {
+  opacity: 0;
+}
+
+/* Shared view styles */
+.view-container {
+  padding: var(--space-8xl);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.view-container h1 {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+  margin-bottom: var(--space-8xl);
+  color: var(--color-text-primary);
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.view-header-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  color: var(--color-accent);
+}
+
+.content-section {
+  line-height: 1.6;
+}
+
+.content-section h2 {
+  margin-bottom: var(--space-4xl);
+  color: var(--color-text-primary);
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.content-section h3 {
+  margin-bottom: var(--space-3xl);
+  color: var(--color-text-primary);
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.content-section p {
+  margin-bottom: var(--space-4xl);
+  color: var(--color-text-secondary);
+}
+
+@media (max-width: 768px) {
+  .view-container {
+    padding: var(--space-4xl);
+  }
+
+  .view-container h1 {
+    font-size: 2rem;
+    margin-bottom: var(--space-6xl);
+  }
+
+  .view-header-icon {
+    width: 2rem;
+    height: 2rem;
+  }
+}
